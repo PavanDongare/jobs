@@ -1,23 +1,8 @@
 function Joblist() {
     return (
-        <div className='bg-white'>
-         
-            <p>
-                .
-                .
-                .
-                .
-                .
-                .
-                .
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-            </p>
-        </div>
+        <div className="font-bold text-gray-700 uppercase">
+        joblist
+    </div>
     )
 }
 

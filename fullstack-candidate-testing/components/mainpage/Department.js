@@ -1,8 +1,9 @@
 function department() {
     return (
-        <div>
-            department
-        </div>
+     
+          <div className="font-bold text-gray-700 uppercase">
+          department
+      </div>
     )
 }
 

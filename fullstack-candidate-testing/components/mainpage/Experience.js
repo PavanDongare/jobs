@@ -1,8 +1,8 @@
 function Experience() {
     return (
-        <div>
-            Exp
-        </div>
+        <div className="font-bold text-gray-700 uppercase">
+       Experience
+    </div>
     )
 }
 

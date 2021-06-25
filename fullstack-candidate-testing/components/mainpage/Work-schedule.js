@@ -1,8 +1,8 @@
 function WorkSchedule() {
     return (
-        <div>
-            WorkSchedule
-        </div>
+        <div className="font-bold text-gray-700 uppercase">
+        Work Schedule
+    </div>
     )
 }
 

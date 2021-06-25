@@ -1,8 +1,9 @@
 function JobType() {
     return (
-        <div>
+        <div className="font-bold text-gray-700 uppercase">
             jobtype
         </div>
+        
     )
 }
 
