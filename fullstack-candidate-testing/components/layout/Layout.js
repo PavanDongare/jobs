@@ -2,6 +2,8 @@ import React from 'react';
 import { Fragment } from 'react';
 
 import MainNavigation from './Main-navigation';
+import Footer from './Footer';
+import Card from '../ui/Card';
 
 function Layout(props) {
     return (
@@ -9,7 +11,7 @@ function Layout(props) {
             <Fragment>
                 <MainNavigation />
                 <main>{props.children}</main>
-                
+                <Card> <Footer></Footer> </Card> 
             </Fragment>
         </div>
 
