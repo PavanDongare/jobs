@@ -1,49 +1,38 @@
-import {Fragment,useEffect} from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Card from '../ui/Card';
+import Job from '../../components/job/Job';
+import { getAllJobs } from '../../helpers/api-util';
 
 
-function Joblist() {
-    async function fetchJobsData() {
-        const response = await fetch('/api/jobs', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-      
-        const data = await response.json();
-      
-        if (!response.ok) {
-          throw new Error(data.message || 'Something went wrong!');
-        }
-      }
-    
-    useEffect(() => {
+function Joblist(props) {
+    const [jobs, setjobs] = useState([]);
+
+    useEffect(async () => {
+        var jobs = await getAllJobs([]);
+        setjobs(jobs);
+        console.log(jobs);
         return () => {
+
         }
     }, [])
-
-      
     return (
         <Fragment>
             <div className="font-bold text-gray-700 uppercase">
                 joblist
             </div>
-           <Card>
-                
-                <div className='flex flex-wrap text-center space-x-1  '>
-                <div> sort by - </div>
+            <div className='flex flex-col'>
+                <Card>
+                    <div className='flex flex-wrap text-center space-x-1  '>
+                        <div> sort by - </div>
                         <div>Location</div>
                         <div>Role</div>
                         <div>Department</div>
                         <div>Education</div>
                         <div>Experience</div>
-                </div>
-           </Card>
-
-           <Card>
-               
-           </Card>
+                    </div>
+                </Card>
+                {jobs.length && jobs.map((job) => <Job data={job}></Job>)}
+            </div>
         </Fragment>
     )
 }
