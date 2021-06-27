@@ -10,6 +10,49 @@ export default async (req, res) => {
   // correct results even if server-side can't finish replies in the right order
 
   // await new Promise((resolve) => setTimeout(resolve, 1000 * Math.random()))
+  const { location, education , department, experience, search } = req.query
+  var required_credentials = education ;
+  var filteredJobs = jobs;
 
-  res.json({jobs: jobs})
+  if (search) {
+    filteredJobs = jobs.filter((item) => {
+      var match = JSON.stringify(item);
+      return match.includes(search);
+    })
+  }
+
+
+
+
+  filteredJobs = sortByKey(filteredJobs,location);
+  filteredJobs = filteredJobs.map((hospital)=>{
+    hospital.items = sortByKey(hospital.items,location,department,experience,required_credentials);
+    return hospital;
+  })
+
+ 
+
+  res.json({ jobs: filteredJobs })
 }
+
+
+ 
+const sortByKey = (arr,location,department,experience,required_credentials)=>{
+  return arr.sort((a, b) =>{
+      if( location && a.items && b.items && a.items.location && b.items.location &&
+          (''+a.items.location).localeCompare(b.itemslocation)) // not equal
+              return location*a.items.location.localeCompare(b.items.location); 
+
+      if( department && a.department && b.department &&
+          (''+a.department).localeCompare(b.department)) // not equal
+              return department*(''+a.department).localeCompare(b.department);
+
+      if( experience && a.experience && b.experience &&
+          (''+a.experience).localeCompare(b.experience)) // not equal
+              return experience*(''+a.experience).localeCompare(b.experience);
+  
+      if( required_credentials && a.required_credentials && b.required_credentials &&
+          (''+a.required_credentials).localeCompare(b.required_credentials)) // not equal
+              return required_credentials*(''+a.required_credentials).localeCompare(b.required_credentials);
+
+})}

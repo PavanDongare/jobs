@@ -18,8 +18,8 @@ function Joblist(props) {
         return () => {
         }
     }, [filter])
+
     const onChange = e =>{
-         
          setfilter({ ...filter, [e.target.name]:orderEnum[e.target.value] }); 
     } 
     return (
@@ -34,11 +34,11 @@ function Joblist(props) {
                         <div > sort by - </div>
 
                         <select name="location" id="location" onChange={e => onChange(e)}>
-                            {order.map((item, index) => <option key={index} value={item}> location {item} </option>)}
+                            {order.map((item, index) => <option key={index} value={item}> Location {item} </option>)}
                         </select>
 
-                        <select name="role" id="role" onChange={e => onChange(e)}>
-                            {order.map((item, index) => <option key={index} value={item}> role {item} </option>)}
+                        <select name="Education" id="Education" onChange={e => onChange(e)}>
+                            {order.map((item, index) => <option key={index} value={item}> Education {item} </option>)}
                         </select>
 
 

@@ -21,9 +21,6 @@ const Index = () => (
       </div>
       <div className='w-screen lg:w-2/3 '> <Card> <Joblist></Joblist></Card> </div>
     </div>
-  
   </div>
-
-
 )
 export default Index
