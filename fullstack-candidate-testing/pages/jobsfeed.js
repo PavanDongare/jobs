@@ -12,17 +12,15 @@ import { getAllJobs } from '../helpers/api-util';
 
 function Jobsfeed() {
     const [jobs, setjobs] = useState([]);
-    const [filter, setfilter] = useState({});
     
     const getData =async (filter)=>{
-        setfilter(filter);
         var jobs = await getAllJobs(filter);
         setjobs(jobs);
     }
 
     useEffect(async () => {
-        getData(filter);
-    }, [filter])
+        getData({});
+    }, [])
 
 
     return (
@@ -35,7 +33,7 @@ function Jobsfeed() {
               <Card> <WorkSchedule></WorkSchedule> </Card>
               <Card> <Experience></Experience>     </Card>
           </div>
-          <div className='w-screen lg:w-2/3 '> <Card> <Joblist jobs={jobs} onChange={(val)=>getData(val)}>  </Joblist></Card> </div>
+          <div className='w-screen lg:w-2/3 '> <Card> <Joblist jobs={jobs} onChange={(val)=>getData(val)}> </Joblist></Card> </div>
         </div>
       </div>
     )
