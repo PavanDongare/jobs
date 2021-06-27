@@ -1,5 +1,8 @@
+
+
+
 export async function getAllJobs(filter) {
-  const response = await fetch('/api/jobs');
+  const response = await fetch('/api/jobs?'+ new URLSearchParams(filter));
   const data = await response.json();
   console.log('got',data);
   const jobs = [];

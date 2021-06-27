@@ -6,7 +6,7 @@ function Job(props) {
         <div>
             {hospital.total_jobs_in_hospital} Jobs in {hospital.name}
             {hospital.items.map((job) =>
-                <li key={job.toString()}>
+                <li>
                     {job.job_title}
                     {job.work_schedule}
                     {job.salary_range}
