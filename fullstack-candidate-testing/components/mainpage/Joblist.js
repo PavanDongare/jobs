@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import Card from '../ui/Card';
 import Job from '../job/job';
+import { v4 as uuidv4 } from 'uuid';
 import { getAllJobs } from '../../helpers/api-util';
 
 
@@ -55,7 +56,7 @@ function Joblist(props) {
                     </div>
                 </Card>
                 {JSON.stringify(filter)}
-                {jobs.map((job) => <div><Job>{job}</Job></div>)}
+                {jobs.map((j) => <div key={uuidv4()}><Job>{j}</Job></div>)}
             </div>
         </Fragment>
     )
