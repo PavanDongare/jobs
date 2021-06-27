@@ -25,10 +25,21 @@ export default async (req, res) => {
 
 
   filteredJobs = sortByKey(filteredJobs,location);
-  filteredJobs = filteredJobs.map((hospital)=>{
+  // filteredJobs = filteredJobs.map((hospital)=>{
+  //   hospital.items = sortByKey(hospital.items,location,department,experience,required_credentials);
+  //   hospital.items.forEach(element => {
+  //       console.log(element.experience);
+  //   });
+  //   return hospital;
+  // })
+
+  filteredJobs.forEach((hospital)=>{
     hospital.items = sortByKey(hospital.items,location,department,experience,required_credentials);
+    hospital.items.forEach(element => {
+        console.log(element.experience);
+    });
     return hospital;
-  })
+  });
 
  
 
@@ -48,8 +59,11 @@ const sortByKey = (arr,location,department,experience,required_credentials)=>{
               return department*(''+a.department).localeCompare(b.department);
 
       if( experience && a.experience && b.experience &&
-          (''+a.experience).localeCompare(b.experience)) // not equal
-              return experience*(''+a.experience).localeCompare(b.experience);
+          (''+a.experience).localeCompare(b.experience)) {
+            console.log(parseInt(experience), a.experience,b.experience,(''+a.experience).localeCompare(b.experience));
+            return parseInt(experience)*(''+a.experience).localeCompare(b.experience);
+          }
+              
   
       if( required_credentials && a.required_credentials && b.required_credentials &&
           (''+a.required_credentials).localeCompare(b.required_credentials)) // not equal

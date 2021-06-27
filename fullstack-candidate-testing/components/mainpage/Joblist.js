@@ -8,7 +8,7 @@ function Joblist(props) {
     const [jobs, setjobs] = useState([]);
     const [filter, setfilter] = useState({});
     const [order, setorder] = useState(['', '⇧', '⇩'])
-    const orderEnum = Object.freeze({"":0, "⇧":1, "⇩":2})
+    const orderEnum = Object.freeze({"":0, "⇧":1, "⇩":-1})
 
 
     useEffect(async () => {
@@ -34,22 +34,22 @@ function Joblist(props) {
                         <div > sort by - </div>
 
                         <select name="location" id="location" onChange={e => onChange(e)}>
-                            {order.map((item, index) => <option key={index} value={item}> Location {item} </option>)}
+                            {order.map((item, index) => <option key={index} value={item}> location {item} </option>)}
                         </select>
 
-                        <select name="Education" id="Education" onChange={e => onChange(e)}>
-                            {order.map((item, index) => <option key={index} value={item}> Education {item} </option>)}
-                        </select>
-
-
-                        <select name="Department" id="Department" onChange={e => onChange(e)}>
-                            {order.map((item, index) => <option key={index} value={item}> Department {item} </option>)}
-
+                        <select name="education" id="Education" onChange={e => onChange(e)}>
+                            {order.map((item, index) => <option key={index} value={item}> education {item} </option>)}
                         </select>
 
 
-                        <select name="Experience" id="Experience" onChange={e => onChange(e)}>
-                            {order.map((item, index) => <option key={index} value={item}> Experience {item} </option>)}
+                        <select name="department" id="Department" onChange={e => onChange(e)}>
+                            {order.map((item, index) => <option key={index} value={item}> department {item} </option>)}
+
+                        </select>
+
+
+                        <select name="experience" id="Experience" onChange={e => onChange(e)}>
+                            {order.map((item, index) => <option key={index} value={item}> experience {item} </option>)}
                         </select>
 
                     </div>
