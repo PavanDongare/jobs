@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import Card from '../ui/Card';
-import Job from '../../components/job/Job';
+import Job from '../job/job';
 import { getAllJobs } from '../../helpers/api-util';
 
 
@@ -31,7 +31,7 @@ function Joblist(props) {
                         <div>Experience</div>
                     </div>
                 </Card>
-                {jobs.length && jobs.map((job) => <Job data={job}></Job>)}
+                { jobs.map((job) => <div key={job.id}><Job>{job}</Job></div> )}
             </div>
         </Fragment>
     )
