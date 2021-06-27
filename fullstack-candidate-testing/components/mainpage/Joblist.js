@@ -9,7 +9,7 @@ function Joblist(props) {
     const [jobs, setjobs] = useState([]);
     const [filter, setfilter] = useState({});
     const [order, setorder] = useState(['', '⇧', '⇩'])
-    const orderEnum = Object.freeze({"":0, "⇧":1, "⇩":-1})
+    const orderEnum = Object.freeze({"":null, "⇧":1, "⇩":-1})
 
 
     useEffect(async () => {

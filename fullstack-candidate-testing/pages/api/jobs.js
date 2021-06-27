@@ -38,6 +38,7 @@ export default async (req, res) => {
     hospital.items.forEach(element => {
         console.log(element.experience);
     });
+    console.log('--------------------------------------------');
     return hospital;
   });
 
@@ -54,9 +55,7 @@ const sortByKey = (arr,location,department,experience,required_credentials)=>{
           (''+a.items.location).localeCompare(b.itemslocation)) // not equal
               return location*a.items.location.localeCompare(b.items.location); 
 
-      if( department && a.department && b.department &&
-          (''+a.department).localeCompare(b.department)) // not equal
-              return department*(''+a.department).localeCompare(b.department);
+    
 
       if( experience && a.experience && b.experience &&
           (''+a.experience).localeCompare(b.experience)) {
@@ -68,5 +67,9 @@ const sortByKey = (arr,location,department,experience,required_credentials)=>{
       if( required_credentials && a.required_credentials && b.required_credentials &&
           (''+a.required_credentials).localeCompare(b.required_credentials)) // not equal
               return required_credentials*(''+a.required_credentials).localeCompare(b.required_credentials);
+
+      if( department && a.department && b.department &&
+        (''+a.department).localeCompare(b.department)) // not equal
+            return department*(''+a.department).localeCompare(b.department);
 
 })}
