@@ -12,7 +12,6 @@ function Joblist(props) {
         setjobs(jobs);
         console.log(jobs);
         return () => {
-
         }
     }, [])
     return (
