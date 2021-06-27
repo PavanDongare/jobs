@@ -10,8 +10,8 @@ export default async (req, res) => {
   // correct results even if server-side can't finish replies in the right order
 
   // await new Promise((resolve) => setTimeout(resolve, 1000 * Math.random()))
-  const { location, education , department, experience, search } = req.query
-  var required_credentials = education ;
+  const { location, education, department, experience, search } = req.query
+  var required_credentials = education;
   var filteredJobs = jobs;
 
   if (search) {
@@ -24,52 +24,37 @@ export default async (req, res) => {
 
 
 
-  filteredJobs = sortByKey(filteredJobs,location);
-  // filteredJobs = filteredJobs.map((hospital)=>{
-  //   hospital.items = sortByKey(hospital.items,location,department,experience,required_credentials);
-  //   hospital.items.forEach(element => {
-  //       console.log(element.experience);
-  //   });
-  //   return hospital;
-  // })
 
+  filteredJobs = sortByKey(filteredJobs, location);
   filteredJobs.forEach((hospital)=>{
     hospital.items = sortByKey(hospital.items,location,department,experience,required_credentials);
-    hospital.items.forEach(element => {
-        console.log(element.experience);
-    });
-    console.log('--------------------------------------------');
     return hospital;
   });
 
- 
+
 
   res.json({ jobs: filteredJobs })
 }
 
 
- 
-const sortByKey = (arr,location,department,experience,required_credentials)=>{
-  return arr.sort((a, b) =>{
-      if( location && a.items && b.items && a.items.location && b.items.location &&
-          (''+a.items.location).localeCompare(b.itemslocation)) // not equal
-              return location*a.items.location.localeCompare(b.items.location); 
 
-    
+const sortByKey = (arr, location, department, experience, required_credentials) => {
+  return arr.sort((a, b) => {
+    if (location && a.items && b.items && a.items[0].location && b.items[0].location &&
+      ('' + a.items[0].location).localeCompare(b.items[0].location)) // not equal
+      return location * ('' + a.items[0].location).localeCompare(b.items[0].location);
 
-      if( experience && a.experience && b.experience &&
-          (''+a.experience).localeCompare(b.experience)) {
-            console.log(parseInt(experience), a.experience,b.experience,(''+a.experience).localeCompare(b.experience));
-            return parseInt(experience)*(''+a.experience).localeCompare(b.experience);
-          }
-              
-  
-      if( required_credentials && a.required_credentials && b.required_credentials &&
-          (''+a.required_credentials).localeCompare(b.required_credentials)) // not equal
-              return required_credentials*(''+a.required_credentials).localeCompare(b.required_credentials);
+    if (required_credentials && a.required_credentials && b.required_credentials &&
+      ('' + a.required_credentials).localeCompare(b.required_credentials)) // not equal
+      return required_credentials * ('' + a.required_credentials).localeCompare(b.required_credentials);
 
-      if( department && a.department && b.department &&
-        (''+a.department).localeCompare(b.department)) // not equal
-            return department*(''+a.department).localeCompare(b.department);
+    if (department && a.department && b.department &&
+      ('' + a.department).localeCompare(b.department)) // not equal
+      return department * ('' + a.department).localeCompare(b.department);
 
-})}
+    if (experience && a.experience && b.experience &&
+      ('' + a.experience).localeCompare(b.experience)) {
+      return parseInt(experience) * ('' + a.experience).localeCompare(b.experience);
+    }
+  })
+}

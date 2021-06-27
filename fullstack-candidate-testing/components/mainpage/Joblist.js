@@ -9,7 +9,7 @@ function Joblist(props) {
     const [jobs, setjobs] = useState([]);
     const [filter, setfilter] = useState({});
     const [order, setorder] = useState(['', '⇧', '⇩'])
-    const orderEnum = Object.freeze({"":null, "⇧":1, "⇩":-1})
+    const orderEnum = Object.freeze({ "": '', "⇧": 1, "⇩": -1 })
 
 
     useEffect(async () => {
@@ -20,15 +20,16 @@ function Joblist(props) {
         }
     }, [filter])
 
-    const onChange = e =>{
-         setfilter({ ...filter, [e.target.name]:orderEnum[e.target.value] }); 
-    } 
+    const onChange = e => {
+        setfilter({ ...filter, [e.target.name]: orderEnum[e.target.value] });
+    }
     return (
         <Fragment>
 
             <div className="font-bold text-gray-700 uppercase">
                 joblist
             </div>
+
             <div className='flex flex-col'>
                 <Card>
                     <div className='flex flex-wrap text-center space-x-1  '>
@@ -42,20 +43,18 @@ function Joblist(props) {
                             {order.map((item, index) => <option key={index} value={item}> education {item} </option>)}
                         </select>
 
+                        <select name="experience" id="Experience" onChange={e => onChange(e)}>
+                            {order.map((item, index) => <option key={index} value={item}> experience {item} </option>)}
+                        </select>
 
                         <select name="department" id="Department" onChange={e => onChange(e)}>
                             {order.map((item, index) => <option key={index} value={item}> department {item} </option>)}
 
                         </select>
-
-
-                        <select name="experience" id="Experience" onChange={e => onChange(e)}>
-                            {order.map((item, index) => <option key={index} value={item}> experience {item} </option>)}
-                        </select>
-
                     </div>
                 </Card>
-                {JSON.stringify(filter)}
+                {/* <button className='bg-blue-900 text-white' onClick={()=>setfilter({})}>Clear Filers</button>
+                {JSON.stringify(filter)} */}
                 {jobs.map((j) => <div key={uuidv4()}><Job>{j}</Job></div>)}
             </div>
         </Fragment>
