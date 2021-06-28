@@ -26,7 +26,6 @@ function Jobsfeed() {
 
     return (
         <div>
-            {JSON.stringify(queryObj)};
         <card><SearchBar onChange={(val)=>setSearchQuery(val)}></SearchBar></card>
         <div className=' flex flex-row'>
           <div className='w-1/3 hidden lg:block'>
