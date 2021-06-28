@@ -21,6 +21,8 @@ export async function getNumberOfRecords() {
   return data;
 }
 
+
+// This API handles multiple req by canceling previous ones so only latest response is considered.  
 let cancelToken  ;
 
 export async function getAllJobsAxios (filter) {
