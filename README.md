@@ -14,7 +14,7 @@ Full Stack test for clipboard Health
 - Unstable nw connection handleled by cancelling previous requests .
 - UNIT tests for API pending
 - Filters
-    - sort by multiple fields combined with search.
+    - Completed sort by multiple fields combined with search.
     - if Database (mysql) use was allowed, queries would be more fine tuned.
     
 Possible improvements- 
