@@ -1,11 +1,17 @@
-import { Fragment,useState,useRef } from 'react';
+import { Fragment,useState,useEffect } from 'react';
+import { useDebounce } from 'use-debounce';
+
 
 function SearchBar(props) {
     const [searchObj, setsearch] = useState({'search':''});
+    const [value] = useDebounce(searchObj, 1000);
     var { search } =  searchObj ;
     const onChange = e => {
         setsearch({ ...searchObj, [e.target.name]: e.target.value });
     }
+    useEffect(() => {
+        props.onChange(searchObj);
+    }, [value])
     return (
             <div className="p-2">
              
