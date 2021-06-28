@@ -10,7 +10,8 @@ function SearchBar(props) {
         setsearch({ ...searchObj, [e.target.name]: e.target.value });
     }
     useEffect(() => {
-        props.onChange(searchObj);
+       if(searchObj.search)
+             props.onChange(searchObj);
     }, [value])
     return (
             <div className="p-2">

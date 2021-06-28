@@ -6,7 +6,7 @@ import Joblist from '../components-re/mainpage/Joblist';
 import Card from "../components-re/ui/Card";
 
 import { Fragment, useEffect, useState } from 'react';
-import { getAllJobs, getNumberOfRecords } from '../helpers/api-util';
+import { getAllJobs, getNumberOfRecords,getAllJobsAxios } from '../helpers/api-util';
 import JobNumbers from "../components-re/mainpage/jobNumbers";
 
 function Index() {
@@ -20,8 +20,11 @@ function Index() {
     }
 
     useEffect(async () => {
-        var jobs = await getAllJobs(queryObj);
-        setjobs(jobs);
+        //var jobs = await getAllJobs(queryObj);
+        var j = await getAllJobsAxios(queryObj);
+        if(j)  setjobs(j);
+        else setjobs([]);
+        console.log(j);
     }, [queryObj])
 
     useEffect(async () => {
