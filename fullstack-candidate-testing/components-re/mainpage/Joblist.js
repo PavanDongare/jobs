@@ -16,15 +16,15 @@ function Joblist(props) {
     return (
         <Fragment>
 
-            <div className="font-bold text-gray-700 uppercase">
+
+            <div className='flex flex-col  md:w-full'>
+            <div className="font-bold  flex justify-center text-gray-700 uppercase">
                 joblist
             </div>
-
-            <div className='flex flex-col'>
-                <Card>
-                    <div className='flex flex-wrap text-center space-x-1  '>
+                    <div className='flex justify-center space-x-1 '>
                         <div > sort by - </div>
 
+                     
                         <select name="location" id="location" onChange={e => onChange(e)}>
                             {order.map((item, index) => <option key={index} value={item}> location {item} </option>)}
                         </select>
@@ -42,9 +42,11 @@ function Joblist(props) {
 
                         </select>
                     </div>
-                </Card>
-    
-                {props.jobs.map((j) => <div key={uuidv4()}><Job>{j}</Job></div>)}
+        
+                <div>
+                {props.jobs.map((j) => <div className='w-auto' key={uuidv4()}><Job>{j}</Job></div>)}
+                </div>
+               
             </div>
         </Fragment>
     )

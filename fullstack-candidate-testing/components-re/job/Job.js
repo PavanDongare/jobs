@@ -7,16 +7,17 @@ function Job(props) {
     const [panel, setpanel] = useState(true);
     return (
         <div>
-           <div onClick={()=>setpanel(!panel)}> {hospital.total_jobs_in_hospital} Jobs in {hospital.name}</div>
+           <div className='bg-gray-600 md:w-full text-white rounded-lg  flex  justify-center   '
+           onClick={()=>setpanel(!panel)}> {hospital.total_jobs_in_hospital} Jobs in {hospital.name}</div>
             
             {panel && 
             hospital.items.map((job) =>
-                <div className='flex space-x-8  ' key={uuidv4()}> 
-                   <div>{job.experience} </div>
-                   <div> {job.job_title} </div>
-                   <div> {job.work_schedule} </div>
-                   <div> {job.salary_range[0] +'-'+job.salary_range[1]+ '$' } </div>
-                   <div>  {job.city} </div>
+                <div className='flex flex-wrap  justify-center   border rounded-md  md:w-full ' key={uuidv4()}> 
+                   <div className='px-1'> {job.experience} </div>
+                   <div className='px-1'> {job.job_title} </div>
+                   <div className='px-1'> {job.work_schedule} </div>
+                   <div className='px-1'> {job.salary_range[0] +'-'+job.salary_range[1]+ '$' } </div>
+                   <div className='px-1'> {job.city} </div>
                    
                 </div>
             )}

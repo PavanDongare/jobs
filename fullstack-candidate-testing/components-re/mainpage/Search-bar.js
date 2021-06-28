@@ -24,12 +24,7 @@ function SearchBar(props) {
                     onChange={(e)=>{onChange(e)}}
                    >
                     </input> 
-                        <div className="p-4">
-                            <button className="bg-blue-500 text-white rounded-full p-2 w-80 hover:bg-blue-400 focus:outline-none  h-8 flex items-center justify-center"
-                             onClick={()=>(props.onChange(searchObj))}>
-                                search
-                            </button>
-                        </div>                                      
+                                                         
                 </div>
             </div>
     );
