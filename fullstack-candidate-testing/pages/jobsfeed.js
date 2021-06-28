@@ -14,21 +14,20 @@ function Jobsfeed() {
     const [jobs, setjobs] = useState([]);
     const [queryObj, setqueryObj] = useState({})
     
-    const getData = async (filter)=>{
+    const setSearchQuery = (filter)=>{
         setqueryObj({...queryObj,...filter});
-        var jobs = await getAllJobs(queryObj);
-        setjobs(jobs);
     }
 
     useEffect(async () => {
-        getData({});
-    }, [])
+         var jobs = await getAllJobs(queryObj);
+         setjobs(jobs);
+    }, [queryObj])
 
 
     return (
         <div>
             {JSON.stringify(queryObj)};
-        <card><SearchBar onChange={(val)=>getData(val)}></SearchBar></card>
+        <card><SearchBar onChange={(val)=>setSearchQuery(val)}></SearchBar></card>
         <div className=' flex flex-row'>
           <div className='w-1/3 hidden lg:block'>
               <Card> <Jobtype></Jobtype>           </Card>
@@ -36,7 +35,7 @@ function Jobsfeed() {
               <Card> <WorkSchedule></WorkSchedule> </Card>
               <Card> <Experience></Experience>     </Card>
           </div>
-          <div className='w-screen lg:w-2/3 '> <Card> <Joblist jobs={jobs} onChange={(val)=>getData(val)}> </Joblist></Card> </div>
+          <div className='w-screen lg:w-2/3 '> <Card> <Joblist jobs={jobs} onChange={(val)=>setSearchQuery(val)}> </Joblist></Card> </div>
         </div>
       </div>
     )

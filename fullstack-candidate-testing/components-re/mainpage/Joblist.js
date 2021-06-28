@@ -6,16 +6,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 function Joblist(props) {
-   
-    const [filter, setfilter] = useState({});
     const [order, setorder] = useState(['', '⇧', '⇩'])
     const orderEnum = Object.freeze({ "": '', "⇧": 1, "⇩": -1 })
 
-
     const onChange = e => {
-        setfilter({ ...filter, [e.target.name]: orderEnum[e.target.value] });
-        props.onChange(filter);
+        props.onChange({[e.target.name]: orderEnum[e.target.value]});
     }
+    
     return (
         <Fragment>
 
