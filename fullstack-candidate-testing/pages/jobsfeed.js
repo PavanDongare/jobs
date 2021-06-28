@@ -12,9 +12,11 @@ import { getAllJobs } from '../helpers/api-util';
 
 function Jobsfeed() {
     const [jobs, setjobs] = useState([]);
+    const [queryObj, setqueryObj] = useState({})
     
-    const getData =async (filter)=>{
-        var jobs = await getAllJobs(filter);
+    const getData = async (filter)=>{
+        setqueryObj({...queryObj,...filter});
+        var jobs = await getAllJobs(queryObj);
         setjobs(jobs);
     }
 
@@ -25,7 +27,8 @@ function Jobsfeed() {
 
     return (
         <div>
-        <card><SearchBar></SearchBar></card>
+            {JSON.stringify(queryObj)};
+        <card><SearchBar onChange={(val)=>getData(val)}></SearchBar></card>
         <div className=' flex flex-row'>
           <div className='w-1/3 hidden lg:block'>
               <Card> <Jobtype></Jobtype>           </Card>
