@@ -38,6 +38,7 @@ function Jobsfeed() {
             <div className=' flex flex-row'>
                 <div className='w-1/3 hidden lg:block'>
                     <Card> <JobNumbers title='Job Type'  data={numberOfRecords.job_type}></JobNumbers> </Card>
+                    <Card> <JobNumbers title='Department'  data={numberOfRecords.department}></JobNumbers> </Card>
                     <Card> <Jobtype data={numberOfRecords.job_type}></Jobtype>           </Card>
                     <Card> <Department data={numberOfRecords.department}></Department>     </Card>
                     <Card> <WorkSchedule data={numberOfRecords.work_schedule}></WorkSchedule> </Card>
