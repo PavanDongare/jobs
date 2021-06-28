@@ -1,13 +1,11 @@
-import { Fragment,useState } from 'react';
+import { Fragment,useState,useRef } from 'react';
 
 function SearchBar(props) {
     const [searchObj, setsearch] = useState({'search':''});
     var { search } =  searchObj ;
     const onChange = e => {
         setsearch({ ...searchObj, [e.target.name]: e.target.value });
-        props.onChange({ [e.target.name]: e.target.value });
     }
-  
     return (
             <div className="p-2">
              
@@ -21,8 +19,9 @@ function SearchBar(props) {
                    >
                     </input> 
                         <div className="p-4">
-                            <button className="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none  h-8 flex items-center justify-center">
-                                search 
+                            <button className="bg-blue-500 text-white rounded-full p-2 w-80 hover:bg-blue-400 focus:outline-none  h-8 flex items-center justify-center"
+                             onClick={()=>(props.onChange(searchObj))}>
+                                search
                             </button>
                         </div>                                      
                 </div>
