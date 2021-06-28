@@ -1,6 +1,7 @@
 
 import axios from "axios";
 
+// Unused function, refer axios version at end  instead
 export async function getAllJobs(filter) {
   const response = await fetch('/api/jobs?'+ new URLSearchParams(filter));
   const data = await response.json();
