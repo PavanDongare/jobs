@@ -39,10 +39,8 @@ function Jobsfeed() {
                 <div className='w-1/3 hidden lg:block'>
                     <Card> <JobNumbers title='Job Type'  data={numberOfRecords.job_type}></JobNumbers> </Card>
                     <Card> <JobNumbers title='Department'  data={numberOfRecords.department}></JobNumbers> </Card>
-                    <Card> <Jobtype data={numberOfRecords.job_type}></Jobtype>           </Card>
-                    <Card> <Department data={numberOfRecords.department}></Department>     </Card>
-                    <Card> <WorkSchedule data={numberOfRecords.work_schedule}></WorkSchedule> </Card>
-                    <Card> <Experience data={numberOfRecords.experience}></Experience>     </Card>
+                    <Card> <JobNumbers title='Work Schedule'  data={numberOfRecords.work_schedule}></JobNumbers> </Card>
+                    <Card> <JobNumbers title='Experience'  data={numberOfRecords.experience}></JobNumbers> </Card>
                 </div>
                 <div className='w-screen lg:w-2/3 '> <Card> <Joblist jobs={jobs} onChange={(val) => setSearchQuery(val)}> </Joblist></Card> </div>
             </div>
