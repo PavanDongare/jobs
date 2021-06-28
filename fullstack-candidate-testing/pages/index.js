@@ -1,12 +1,10 @@
 import React from "react"
 import SearchBar from '../components-re/mainpage/Search-bar';
-import Department from '../components-re/mainpage/Department';
+
 import Joblist from '../components-re/mainpage/Joblist';
-import Jobtype from '../components-re/mainpage/Jobtype';
-import WorkSchedule from '../components-re/mainpage/Work-schedule';
+
 import Card from "../components-re/ui/Card";
-import Experience from "../components-re/mainpage/Experience";
-import Footer from "../components-re/layout/Footer";
+
 import { Fragment, useEffect, useState } from 'react';
 import { getAllJobs, getNumberOfRecords } from '../helpers/api-util';
 import JobNumbers from "../components-re/mainpage/jobNumbers";
