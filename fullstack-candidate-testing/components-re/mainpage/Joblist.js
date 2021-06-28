@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
-import Card from '../ui/Card';
-import Job from '../job/job';
+import Job from '../job/Job';
 import { v4 as uuidv4 } from 'uuid';
 
 
