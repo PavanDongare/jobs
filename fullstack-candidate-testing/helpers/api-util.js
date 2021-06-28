@@ -14,3 +14,9 @@ export async function getAllJobs(filter) {
   }
   return jobs;
 }
+
+export async function getNumberOfRecords() {
+  const response = await fetch('/api/filters');
+  const data = await response.json();
+  return data;
+}
