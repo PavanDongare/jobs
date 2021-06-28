@@ -5,7 +5,7 @@ function SearchBar(props) {
     var { search } =  searchObj ;
     const onChange = e => {
         setsearch({ ...searchObj, [e.target.name]: e.target.value });
-        props.onChange(searchObj);
+        props.onChange({ [e.target.name]: e.target.value });
     }
   
     return (
@@ -16,6 +16,8 @@ function SearchBar(props) {
                     <input className="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" 
                     id="search" type="text" placeholder="search"
                     name="search"
+                    value={search}
+                    onChange={(e)=>{onChange(e)}}
                    >
                     </input> 
                         <div className="p-4">
@@ -24,8 +26,6 @@ function SearchBar(props) {
                             </button>
                         </div>                                      
                 </div>
-              
-                {JSON.stringify(searchObj)}
             </div>
     );
 }
