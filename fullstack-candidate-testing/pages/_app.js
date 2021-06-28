@@ -1,7 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import Head from 'next/head';
 import React, { Fragment } from 'react'
-import Layout from '../components/layout/Layout';
+import Layout from '../components-re/layout/Layout';
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -2,39 +2,29 @@ import { Fragment, useEffect, useState } from 'react';
 import Card from '../ui/Card';
 import Job from '../job/job';
 import { v4 as uuidv4 } from 'uuid';
-import { getAllJobs } from '../../helpers/api-util';
+
 
 
 function Joblist(props) {
-    const [jobs, setjobs] = useState([]);
-    const [filter, setfilter] = useState({});
     const [order, setorder] = useState(['', '⇧', '⇩'])
     const orderEnum = Object.freeze({ "": '', "⇧": 1, "⇩": -1 })
 
-
-    useEffect(async () => {
-        var jobs = await getAllJobs(filter);
-        setjobs(jobs);
-        console.log(jobs);
-        return () => {
-        }
-    }, [filter])
-
     const onChange = e => {
-        setfilter({ ...filter, [e.target.name]: orderEnum[e.target.value] });
+        props.onChange({[e.target.name]: orderEnum[e.target.value]});
     }
+    
     return (
         <Fragment>
 
-            <div className="font-bold text-gray-700 uppercase">
+
+            <div className='flex flex-col  md:w-full'>
+            <div className="font-bold  flex justify-center text-gray-700 uppercase">
                 joblist
             </div>
-
-            <div className='flex flex-col'>
-                <Card>
-                    <div className='flex flex-wrap text-center space-x-1  '>
+                    <div className='flex justify-center space-x-1 '>
                         <div > sort by - </div>
 
+                     
                         <select name="location" id="location" onChange={e => onChange(e)}>
                             {order.map((item, index) => <option key={index} value={item}> location {item} </option>)}
                         </select>
@@ -52,10 +42,11 @@ function Joblist(props) {
 
                         </select>
                     </div>
-                </Card>
-                {/* <button className='bg-blue-900 text-white' onClick={()=>setfilter({})}>Clear Filers</button>
-                {JSON.stringify(filter)} */}
-                {jobs.map((j) => <div key={uuidv4()}><Job>{j}</Job></div>)}
+        
+                <div>
+                {props.jobs.map((j) => <div className='w-auto' key={uuidv4()}><Job>{j}</Job></div>)}
+                </div>
+               
             </div>
         </Fragment>
     )
